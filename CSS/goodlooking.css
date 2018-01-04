@@ -1,4 +1,9 @@
  body {
-	 background-image:url("https://techreign.github.io./Images/background_test.jpg")
- }
+	 background-image:url("https://techreign.github.io./Images/background_test.jpg");
+	}
+ 
+ h1, p {
+	color: white;
+	font-family: "Gill Sans";
+	}
  
