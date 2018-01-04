@@ -5,8 +5,9 @@
  h1, p {
 	color: white;
 	font-family: "Gill Sans", serif;
+	font-size: 14px;
 	}
 	
  div {
-	color: Tomato;
+	background-color: Tomato;
 	}

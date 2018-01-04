@@ -1,0 +1,28 @@
+/* CSS for Haunted House webpage */
+
+/* using an ID here */
+ #border {
+		border-style: solid;
+		border-width: 5px;
+		border-color: red;
+		/* or border: 5px solid red */
+		}
+		
+/* using a class here */
+ .main_text {
+			color: white;
+			font-family: "Times New Roman", Times, serif;
+			font-size: 1.875em;
+			font-weight: bold;
+			font-style: oblique;
+			}
+
+/* normal selector here */			
+ body	{
+		 background-image: url("https://techreign.github.io./Images/background_test.jpg");
+		}
+		
+ h1 		{
+		 color:gray;
+		}
+		
