@@ -5,4 +5,8 @@
  h1, p {
 	color: white;
 	font-family: "Gill Sans", serif;
-	} 
+	}
+	
+ div {
+	color: Tomato;
+	}
