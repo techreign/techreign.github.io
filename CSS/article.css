@@ -1,0 +1,56 @@
+.main {
+		background-color: #D3D3D3;
+    }
+
+.headline {
+			font-size: 25px;
+			text-align: center;
+			line-height:0.7em;
+		}
+
+.picture {
+			background-image: url(
+		}
+
+.heading {
+			font-size: 28px;
+			font-weight: bold;
+		}
+		
+.caption {
+			color: black;
+			font-size: 12px;
+			font-family: Calibri;
+			font-weight: bold;
+		}
+		
+.story {
+			color: black;
+			font-size: 14px;
+			font-family: Times New Roman;
+			width: 380; 
+			max-width: 380px; 
+			display: inline-block;
+		}
+		
+#col1 {	
+			float: left;
+}
+
+#col2 {
+			float:left;
+}
+
+#col3 {
+			float:left;
+} 
+		
+h1, h3, h5 {
+			margin: 7px;
+			padding: 7px;
+		}
+		
+.tab { text-indent:40px }
+		
+
+		
