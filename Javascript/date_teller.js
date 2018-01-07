@@ -24,7 +24,7 @@ function startTime() {
 	} else {
 		suffix += "PM";
 	}
-	document.getElementById('time').innerHTML = h + ":" + m + ":" + s + suffix;
+	document.getElementById('time').innerHTML = h + ":" + m + ":" + s + " " + suffix;
 	document.getElementById('datee').innerHTML = mo + "/" + d + "/" + y;
 	
 	t = setTimeout(function() {startTime()}, 500);
