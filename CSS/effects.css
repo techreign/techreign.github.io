@@ -1,0 +1,18 @@
+p {
+	text-shadow: 2px 2px red;
+	font-size: 30px;
+}
+
+div {
+	box-shadow: 10px 10px ;
+	background-color: red;
+	transform: rotate(20deg);
+	transform: scale(0.5, 1.5);
+	transition: width 2s, height 4s;
+	transition-timing-function: ease-in-out;
+}
+
+div: hover {
+		width: 300px;
+}
+
