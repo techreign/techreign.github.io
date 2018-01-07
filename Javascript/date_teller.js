@@ -13,7 +13,7 @@ function startTime() {
 	var d = today.getDate();
 	var mo = today.getMonth();
 	var y = today.getYear();
-	var suffix;
+	var suffix = "";
 	// adding a zero in front of numbers less than 10
 	m = checkTime(m);
 	s = checkTime(s);
