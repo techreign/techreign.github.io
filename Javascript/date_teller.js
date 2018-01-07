@@ -13,12 +13,18 @@ function startTime() {
 	var d = today.getDate();
 	var mo = today.getMonth();
 	var y = today.getYear();
+	var suffix;
 	// adding a zero in front of numbers less than 10
 	m = checkTime(m);
 	s = checkTime(s);
 	y = y + 1900;
 	mo = mo + 1;
-	document.getElementById('time').innerHTML = h + ":" + m + ":" + s;
+	if (h < 12) {
+		suffix += "AM";
+	} else {
+		suffix += "PM";
+	}
+	document.getElementById('time').innerHTML = h + ":" + m + ":" + s + suffix;
 	document.getElementById('datee').innerHTML = mo + "/" + d + "/" + y;
 	
 	t = setTimeout(function() {startTime()}, 500);
