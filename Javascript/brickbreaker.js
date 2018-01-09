@@ -1,24 +1,24 @@
 // global game variables
 var canvas;
 var canvasContext;
-var ballX = 50;
-var ballY = 50;
+var ballX = 100;
+var ballY = 100;
 var ballRadius = 10;
-var ballSpeedX = 12;
-var ballSpeedY = 1;
-var paddleWidth = 10;
-const PADDLE_HEIGHT = 100;
+var ballSpeedX = 3;
+var ballSpeedY = 10;
+var paddleWidth = 100;
+const PADDLE_HEIGHT = 10;
 const WINNING_SCORE = 5;
-var paddle1X = 0;
-var paddle1Y = 100;
-var paddle2X;
-var paddle2Y = 100;
+var paddle1X = 400;
+var paddle1Y = 590;
 var backgroundColour = "black";
 var paddleColour = "white";
 var ballColour = "red";
 var player1Score = 0;
 var player2Score = 0;
 var showingWinScreen = false;
+var brickWidth = 100;
+var brickHeight = 10;
 
 // game main run function
 window.onload = function() {
@@ -37,7 +37,7 @@ window.onload = function() {
 
 	canvas.addEventListener('mousemove', function(evt) {
 		var mousePos = calculateMousePos(evt);
-		paddle1Y = mousePos.y - PADDLE_HEIGHT/2;
+		paddle1X = mousePos.x - paddleWidth/2;
 	});
 }
 
@@ -49,12 +49,6 @@ function handleMouseClick(evt) {
 	}
 }
 
-function drawNet() {
-		for(var i = 0; i < canvas.height; i+= 40) {
-			colourRect(canvas.width/2-1, i, 2, 20, 'white');
-		}
-}
-
 function drawEverything() {
 	// draws a black background for the game
 	colourRect(0, 0, canvas.width, canvas.height, backgroundColour);
@@ -62,26 +56,29 @@ function drawEverything() {
 	if (showingWinScreen) {
 		canvasContext.fillStyle = "white";
 		if (player1Score >= WINNING_SCORE) {
-			canvasContext.fillText("P1 wins! Click to Continue", canvas.width/2, canvas.height/2);
-		} else {
-			canvasContext.fillText("P2 wins! Click to Continue", canvas.width/2, canvas.height/2);
-		}
+			canvasContext.fillText("You win! Click to Continue", canvas.width/2, canvas.height/2);
+		} 
 		return;
 	}
 
-	drawNet();
 	// draws the padel
 	colourRect(paddle1X, paddle1Y, paddleWidth, PADDLE_HEIGHT, paddleColour);
-	// draws the computer paddle
-	colourRect(canvas.width - (paddleWidth), paddle2Y, paddleWidth, PADDLE_HEIGHT, paddleColour);
 	// draws the ball
 	colourCircle(ballX, ballY, ballRadius, ballColour);
-	// draws the net
-
-	canvasContext.fillText(player1Score, 100, 100);
-	canvasContext.fillText(player2Score, 700, 100);
-
+	// draw the bricks
+	drawBricks();
 }
+
+function drawBricks() {
+	for (var j = 0; j < 5; j++) {
+		for (var i = 0; i < 6; i++) {
+			colourRect(50 + (i * (brickWidth + 5)), 50 + (brickHeight + (j*30)),
+			brickWidth, brickHeight, paddleColour );
+		}
+	}
+}
+
+
 
 // helper function to draw the objects
 function colourRect(leftX, topY, width, height, drawColour) {
@@ -104,47 +101,27 @@ function moveEverything() {
 	// controlling the ball movement
 	ballX += ballSpeedX;
 	ballY += ballSpeedY;
-	computerMovement();
 
 	// handling the ball horizontal collisions with the wall
 	if (ballX > canvas.width) {
-		if (ballY > paddle2Y && ballY < paddle2Y + PADDLE_HEIGHT) { 
-			ballSpeedX = -ballSpeedX;
-			var deltaY = ballY - (paddle2Y + PADDLE_HEIGHT/2);
-			ballSpeedY = deltaY * 0.35;
-		} else {
-			player1Score++;
-			ballReset();
-		}
+		ballSpeedX = -ballSpeedX;
 	}
 	if (ballX < 0) {
-		if (ballY > paddle1Y && ballY < paddle1Y + PADDLE_HEIGHT){ 
-			ballSpeedX = -ballSpeedX;
-			var deltaY = ballY - (paddle1Y + PADDLE_HEIGHT/2);
-			ballSpeedY = deltaY * 0.35;
-		} else {
-			player2Score++;
-			ballReset();
-		}
+		ballSpeedX = -ballSpeedX;
 	}
 	// handling the ball vertical collisions with the wall
 	if (ballY > canvas.height) {
-		ballSpeedY = -ballSpeedY;
+		if (ballX <= paddle1X + paddleWidth &&
+			ballX >= paddle1X) {
+			ballSpeedY = -ballSpeedY;
+		} else {
+			ballReset();
+		}
 	}
 	if (ballY < 0) {
 		ballSpeedY = -ballSpeedY;
 	}
 
-}
-
-// player 2 AI movement
-function computerMovement() {
-	var paddle2YCenter = paddle2Y + (PADDLE_HEIGHT/2);
-	if (paddle2YCenter < ballY - 35) {
-		paddle2Y += 6;
-	} else if (paddle2YCenter > ballY + 35) {
-		paddle2Y -= 6;
-	}
 }
 
 function calculateMousePos(evt) {
@@ -157,12 +134,10 @@ function calculateMousePos(evt) {
 		x:mouseX,
 		y:mouseY
 	};
-
 }
 
 function ballReset() {
-	if (player1Score >= WINNING_SCORE ||
-		player2Score >= WINNING_SCORE ) {
+	if (player1Score >= WINNING_SCORE ) {
 		showingWinScreen = true;
 	}
 	ballX = canvas.width/2;
