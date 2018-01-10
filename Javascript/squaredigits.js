@@ -7,7 +7,7 @@ function showAnswer() {
 function squareDigit() {
 	var num = document.getElementById('numero').value;
 	var newNum = "";
-	var numLeft = parseInt(num);
+	var numLeft = parseInt(num) || 0;
 	while (numLeft != 0) {
 		var remainder = numLeft % 10;
 		numLeft = Math.floor(numLeft / 10); 
