@@ -9,7 +9,7 @@ function squareDigit() {
 	var newNum = "";
 	while (num != 0) {
 		var remainder = num % 10;
-		var leftNum = Math.floor(num / 10); 
+		num = Math.floor(num / 10); 
 		newNum = remainder * remainder + newNum;
 	}
 	return newNum;
