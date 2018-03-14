@@ -38,11 +38,13 @@ function score(correct) {
 }
 
 function showAnswer() {
-	document.getElementById('answer').innerHTML = "Correct: " + counterCorrect + "   Wrong: " + counterWrong;
+	document.getElementById('answer').innerHTML = "Correct: " + counterCorrect +
+	 "   Wrong: " + counterWrong;
 }
 
 function computeAnswer() {
-	userAnswer = parseInt(document.getElementById('numero').value) || document.getElementById('numero').value;
+	userAnswer = parseInt(document.getElementById('numero').value) ||
+	 document.getElementById('numero').value;
 }
 
 function randomNum() {
@@ -64,4 +66,3 @@ function fizzbuzz() {
 function getNum() {
 	return num;
 }
-

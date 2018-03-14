@@ -28,7 +28,7 @@
 			color: black;
 			font-size: 14px;
 			font-family: Times New Roman;
-			width: 380; 
+			width: 380px; 
 			max-width: 380px; 
 			display: inline-block;
 		}
@@ -51,6 +51,4 @@ h1, h3, h5 {
 		}
 		
 .tab { text-indent:40px }
-		
-
 		
